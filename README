@@ -1,0 +1,45 @@
+Matrix-vector multiplication server using PETSc. Useful for carrying out 
+matrix-vector multiplications in parallel inside of Octave or Matlab 
+using large matrices. 
+
+Written by Sergey Voronin, September 2014
+
+====== petsc installation ========
+
+PETSc (http://www.mcs.anl.gov/petsc/) must be installed and correctly 
+sourced prior to use.
+
+basic installation (assume 64 indices for large matrix support)
+
+mkdir /opt/petsc_software/
+
+wget and untar petsc-3.5.1.tar.gz (or latest version)
+cd petsc-3.5.1/
+
+./configure --with-cc=gcc --with-cxx=g++ --with-fc=0 --download-f2cblaslapack --download-mpich --with-64-bit-indices
+
+make PETSC_DIR=/opt/petsc_software/petsc-3.5.1 PETSC_ARCH=arch-linux2-c-debug all
+
+make PETSC_DIR=/opt/petsc_software/petsc-3.5.1 PETSC_ARCH=arch-linux2-c-debug test
+
+====== code compilation ========
+
+run the script compile_all.sh
+
+this compiles the c code in server_code/ and client_code/ folders
+
+gcc -o get_petsc_vector_length get_petsc_vector_length.c
+make petsc_server_regular
+
+
+====== usage ========
+
+The server must be launched, this maybe done using the supplied start_server script:
+
+./start_server.sh
+
+Then in another tab or terminal, open octave or matlab and execute
+
+compute_Ax_and_Atx.m
+
+
