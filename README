@@ -42,4 +42,39 @@ Then in another tab or terminal, open octave or matlab and execute
 
 compute_Ax_and_Atx.m
 
+octave:3> compute_Ax_and_Atx
+do y=A*x  
+writing x1 to /petsc_server_test_new1/petsc_data1//x1.petsc
+ls: cannot access /petsc_server_test_new1/petsc_data1//y1.pets
+c: No such file or directory
+waiting for output
+reading y1 from /petsc_server_test_new1/petsc_data1//y1.petsc
+Variables in the current scope:
+
+   Attr Name        Size                     Bytes  Class
+   ==== ====        ====                     =====  =====
+        x        1000x1                       8000  double
+        y        1000x1                       8000  double
+
+Total is 2000 elements using 16000 bytes
+
+done with mult: norm(x) = 17.697000, norm(y) = 35.393999
+perror = 0.000000
+do yt = At*y
+writing x1 to /petsc_server_test_new1/petsc_data1//x1.petsc
+ls: cannot access /petsc_server_test_new1/petsc_data1//y1.petsc: No such file or directory
+waiting for output
+reading y1 from /petsc_server_test_new1/petsc_data1//y1.petsc
+Variables in the current scope:
+
+   Attr Name        Size                     Bytes  Class
+   ==== ====        ====                     =====  =====
+        xt       1000x1                       8000  double
+        yt       1000x1                       8000  double
+
+Total is 2000 elements using 16000 bytes
+
+done with mult: norm(xt) = 18.731915, norm(yt) = 37.463829
+perror = 0.000000
+octave:4> 
 
