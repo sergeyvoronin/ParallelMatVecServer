@@ -1,8 +1,12 @@
 Matrix-vector multiplication server using PETSc. Useful for carrying out 
-matrix-vector multiplications in parallel inside of Octave or Matlab 
-using large matrices. 
+matrix-vector multiplications in parallel inside of Octave or Matlab (or in a 
+standalone program) using large matrices. For example, one can program an algorithm with Matlab or 
+Octave utilizing very large matrices, by doing matrix-vector multiplications 
+on a cluster in parallel. This software has been used to program iterative 
+algorithms in Octave, using matrices upwards of 1 TB in size.
 
-Written by Sergey Voronin, September 2014
+Written by Sergey Voronin
+Last updated: September 2014
 
 ====== petsc installation ========
 
@@ -26,21 +30,34 @@ make PETSC_DIR=/opt/petsc_software/petsc-3.5.1 PETSC_ARCH=arch-linux2-c-debug te
 
 run the script compile_all.sh
 
-this compiles the c code in server_code/ and client_code/ folders
-
-gcc -o get_petsc_vector_length get_petsc_vector_length.c
-make petsc_server_regular
+this compiles the c code in server_code/ and client_code/ folders 
+as well as the code to make the test matrix in PETSc binary format in make_test_matrix/  
 
 
 ====== usage ========
 
-The server must be launched, this maybe done using the supplied start_server script:
+First, make a matrix in PETSc binary format. For an example of how to do this, 
+one can use the program
+make_test_matrix/write_diagonal_matrix.c
+by executing the write_diagonal_matrix executable. This makes a 1000x1000 
+(or differently sized) diagonal matrix D = diag(2,2,...,2). Now we can use the 
+server with the matrix make_test_matrix/diagonalMatrix1.petsc. In reality, one 
+can use a very large matrix, limited only by ram availabililty.
+
+The server must be launched, this maybe done using the supplied start_server script. 
+Modify the script to use the right number of MPI processes for your system. Note 
+that the script must setup the correct paths to PETSc and MPI.
 
 ./start_server.sh
 
-Then in another tab or terminal, open octave or matlab and execute
+This loads the matrix in memory and awaits commands. When a multiply command is received, 
+the server multiplies (in parallel) the matrix or it's transpose by the given vector and 
+writes the result to disk to be read in by a matlab or octave client.
 
-compute_Ax_and_Atx.m
+Then in terminal (or if on a cluster, on a single core of a node), open octave or matlab 
+and execute compute_Ax_and_Atx.m . This is an example of using the mat-vec server. It will compare 
+the results of doing the mat-vec operations with the matrix we generated above to 
+those obtained via computation in matlab or octave.
 
 octave:3> compute_Ax_and_Atx
 do y=A*x  
