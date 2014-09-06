@@ -32,7 +32,7 @@ fprintf('done with mult: norm(x) = %f, norm(y) = %f\n', norm(x), norm(y));
 fprintf('perror = %f\n', perror);
 
 
-fprintf('do yt = At*y\n');
+fprintf('do yt = At*xt\n');
 xt = rand(m,1);
 yt = At*xt;
 whos xt yt

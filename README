@@ -78,7 +78,7 @@ Total is 2000 elements using 16000 bytes
 
 done with mult: norm(x) = 17.697000, norm(y) = 35.393999
 perror = 0.000000
-do yt = At*y
+do yt = At*xt
 writing x1 to /petsc_server_test_new1/petsc_data1//x1.petsc
 ls: cannot access /petsc_server_test_new1/petsc_data1//y1.petsc: No such file or directory
 waiting for output
