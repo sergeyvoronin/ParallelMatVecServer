@@ -1,5 +1,6 @@
 /* sample program for converting binary vector written by matlab to PETSc format without using mex files
 gcc -o convertMatlabBinaryVecToPetsc convertMatlabBinaryVecToPetsc.c 
+Sergey Voronin
 
 use like this:
 vec_file_mat  = [data_dir, '/x.bin'];

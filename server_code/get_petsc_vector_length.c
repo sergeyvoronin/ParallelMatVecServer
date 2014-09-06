@@ -94,7 +94,6 @@ PetscInt getVectorSize(char * filename){
     num_rows_b = (PetscInt*)malloc(sizeof(PetscInt));
 
     if( mySystemType == BIG_ENDIAN_SYS ){
-/*	mexPrintf("Detected big-endian system. No byte swapping will be used.\n"); */
 
 	io = fopen(filename,"r");
 
@@ -105,7 +104,6 @@ PetscInt getVectorSize(char * filename){
         fclose(io);
 
   } else {
-/* 	mexPrintf("Detected little-endian system. Byte swapping will be used.\n"); */
 
 	io = fopen(filename,"r");
 
@@ -126,7 +124,6 @@ PetscInt getVectorSize(char * filename){
     free(num_rows);
     free(num_rows_b);
 
-    /*return (*num_rows);*/
     return num_rows_return_val;
 }
 

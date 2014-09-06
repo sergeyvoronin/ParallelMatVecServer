@@ -1,6 +1,5 @@
-static char help[] = "Reads in a matrix from disk and starts a server waiting for commands and executing them. This version compiles against the regular version of PETSc. Written by Sergey Voronin. Last updated Feb 2014.";
+static char help[] = "Reads in a matrix from disk and starts a server waiting for commands and executing them. This version compiles against the regular version of PETSc. Written by Sergey Voronin.";
 
-//#include "petscksp.h"
 #include "petscmat.h"
 #include <stdlib.h>
 #include <string.h>
@@ -19,7 +18,7 @@ int main(int argc,char **args)
 {
     Mat A;
     Vec x,y;
-    PetscViewer    pv;               /* viewers are needed for file i/o ops */
+    PetscViewer    pv;               
     PetscErrorCode ierr ;
     PetscInt       m,n,mloc,nloc,server_up,file_scanned,command_executed,vec_size_int; 
     PetscMPIInt    rank, size;

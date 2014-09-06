@@ -1,5 +1,6 @@
 /* converts a matrix in PETSc format to a matrix readable with MATLAB binary format 
 gcc -o convertPetscToMatlabBinaryVec convertPetscToMatlabBinaryVec.c
+Sergey Voronin
 
 read in MATLAB via:
 fp = fopen('v.bin','r');
