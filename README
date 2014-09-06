@@ -51,13 +51,14 @@ that the script must setup the correct paths to PETSc and MPI.
 ./start_server.sh
 
 This loads the matrix in memory and awaits commands. When a multiply command is received, 
-the server multiplies (in parallel) the matrix or it's transpose by the given vector and 
+the server multiplies (in parallel) the matrix or its transpose by the given vector and 
 writes the result to disk to be read in by a matlab or octave client.
 
-Then in terminal (or if on a cluster, on a single core of a node), open octave or matlab 
+Then in a different terminal if testing with the client and server on the same machine 
+(or if on a cluster, on a single core of a node), open octave or matlab 
 and execute compute_Ax_and_Atx.m . This is an example of using the mat-vec server. It will compare 
-the results of doing the mat-vec operations with the matrix we generated above to 
-those obtained via computation in matlab or octave.
+the results of doing the mat-vec operations with the matrix we generated above multiplied via 
+the server program using PETSc to those obtained via computation in matlab or octave.
 
 octave:3> compute_Ax_and_Atx
 do y=A*x  
